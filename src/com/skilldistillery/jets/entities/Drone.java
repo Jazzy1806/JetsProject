@@ -13,13 +13,13 @@ public class Drone extends Jet implements SpecialSupport, Combat {
 
 	@Override
 	public void dropBombs() {
-		int random = (int) Math.random() *4;
+		int random = (int) (Math.random() *3);
 		switch (random) {
-		case 1: 
+		case 0: 
 			System.out.println(getModel() + " has a positive I.D. on target. Payload initiated."); break;
-		case 2: 
+		case 1: 
 			System.out.println("Someone forgot to load the bombs. " + getModel() + " should probably head back to the airfield."); break;
-		case 3: 
+		case 2: 
 			System.out.println("Sensor malfunciton- " + getModel() + " can't confirm target. Launch sequence aborted."); break;
 		default: break;
 		}
