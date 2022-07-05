@@ -6,6 +6,7 @@ import com.skilldistillery.jets.entities.Drone;
 import com.skilldistillery.jets.entities.Fighter;
 import com.skilldistillery.jets.entities.Jet;
 import com.skilldistillery.jets.entities.Passenger;
+import com.skilldistillery.jets.entities.Pilot;
 
 import java.util.*;
 
@@ -41,15 +42,16 @@ public class JetsApp {
 							 "\n11. Have drones scan for thermal signatures : type \"thermal\"" +
 							 "\n12. Add a jet to the airfield : type \"add\"" +
 							 "\n13. Remove a jet from the airfield inventory : type \"remove\"" +
-							 "\n14. Quit the program: type \"quit\"");
+							 "\n14. Hire a pilot : type \"pilot\"" +
+							 "\n15. Quit the program: type \"quit\"");
 			String selection = (scan.nextLine()).toLowerCase();
 			while (true) {
 				if (!selection.equals("list") && !selection.equals("fly") && !selection.equals("solo") &&
 					!selection.equals("fastest") && !selection.equals("range") &&
 					!selection.equals("cargo") && !selection.equals("passenger") &&
 					!selection.equals("fight") && !selection.equals("bombs") &&
-					!selection.equals("video") && !selection.equals("thermal") && 
-					!selection.equals("add") && !selection.equals("remove") && !selection.equals("quit")) {
+					!selection.equals("video") && !selection.equals("thermal") && !selection.equals("add") &&
+					!selection.equals("remove") && !selection.equals("pilot") && !selection.equals("quit")) {
 						System.out.println("Hmm... that's not an option. What would you like to do? ");
 						selection = (scan.nextLine()).toLowerCase();
 				}
@@ -69,6 +71,7 @@ public class JetsApp {
 				case "thermal": thermalSensor(); break;
 				case "add": addCustomJet(); break;
 				case "remove": userRemoveJet(); break;
+				case "pilot": userHirePilot(); break;
 				default: quit(); keepGoing = false;
 			}
 		}
@@ -100,6 +103,7 @@ public class JetsApp {
 			}
 		}
 		int choice = scan.nextInt();
+		scan.nextLine();
 		airfield.getJets().get(choice - 1).fly();
 	}
 	
@@ -204,6 +208,7 @@ public class JetsApp {
 		
 		System.out.println("How much does it cost? ");
 		long jetPrice = scan.nextLong();
+		scan.nextLine();
 		airfield.addJet(jetType, jetModel, jetSpeed, jetRange, jetPrice);
 		System.out.println("Your jet has been added to the airfield.");
 	}
@@ -219,6 +224,25 @@ public class JetsApp {
 		airfield.removeJet(selection);
 		System.out.println("The jet you selected has been removed from the airfield.");
 		scan.nextLine(); //refresh the scanner
+	}
+	
+	public void userHirePilot() {
+		int counter = 1;
+		System.out.println("Which aircraft do you want the pilot to fly? ");
+		for (Jet jet : airfield.getJets()) {
+			System.out.println(counter + ". " + jet);
+			counter++;
+		}
+		int aircraft = scan.nextInt();
+		counter = 1;
+		System.out.println("Which pilot do you want to hire? ");
+		for (Pilot pilot : airfield.getJet(0).getPilots()) {
+			System.out.println(counter + ". " + pilot);
+			counter++;
+		}
+		int pilotChoice = scan.nextInt();
+		scan.nextLine();
+		airfield.hirePilot(aircraft, pilotChoice);
 	}
 	
 	public void quit() {

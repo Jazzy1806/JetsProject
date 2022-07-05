@@ -53,4 +53,15 @@ public class AirField {
 	public void removeJet(int selection) {
 		jets.remove(selection - 1);
 	}
+	
+	public Jet getJet(int index) {
+		return jets.get(index);
+	}
+	
+	public void hirePilot (int aircraft, int pilotChoice) {
+		ArrayList<Pilot> pilotList = new ArrayList<Pilot>();
+		pilotList = jets.get(0).getPilots();
+		jets.get(aircraft-1).setPilot(pilotList.get(pilotChoice-1));	
+		System.out.println("You have hired a new pilot!");
+	}
 }

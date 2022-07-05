@@ -4,7 +4,7 @@ import java.text.DecimalFormat;
 import java.util.*;
 
 public abstract class Jet {
-	private ArrayList<Pilot> pilots = new ArrayList<Pilot>();
+	protected ArrayList<Pilot> pilots = new ArrayList<Pilot>();
 
 	DecimalFormat df = new DecimalFormat("0.00");
 	DecimalFormat priceFormat = new DecimalFormat("###,###,###,###,###,###,###,###,###,###.00");
@@ -38,7 +38,14 @@ public abstract class Jet {
 		pilots.add(new Pilot("Conrad", "Parkeet", "Anaconda", 26, 1));
 		pilots.add(new Pilot("Steve", "Blair", "Talon", 33, 3));
 	}
+	
+	public void setPilot(Pilot pilot) {
+		this.pilot = pilot;
+	}
 
+	public ArrayList<Pilot> getPilots() {
+		return pilots;
+	}
 
 	public String getModel() {
 		return model;
