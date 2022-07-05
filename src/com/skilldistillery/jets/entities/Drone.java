@@ -9,7 +9,6 @@ public class Drone extends Jet implements SpecialSupport, Combat {
 	@Override
 	public void fight() {
 		System.out.println(getModel() + " is not equipped for a dogfight. Disengage to avoid destruction.");
-
 	}
 
 	@Override
@@ -42,6 +41,4 @@ public class Drone extends Jet implements SpecialSupport, Combat {
 		default: break;
 		}
 	}
-
-	
 }

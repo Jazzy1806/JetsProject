@@ -5,4 +5,4 @@ public interface SpecialSupport {
 		public void videoFeed();
 		
 		public void thermalSensor();
-		}
+}

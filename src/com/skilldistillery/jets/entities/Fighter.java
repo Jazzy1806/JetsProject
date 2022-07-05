@@ -15,6 +15,4 @@ public class Fighter extends Jet implements Combat {
 	public void dropBombs() {
 		System.out.println("Target is locked in. " + getModel() + " is dropping payload.");
 	}
-
-	
 }

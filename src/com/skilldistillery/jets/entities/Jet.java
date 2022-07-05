@@ -61,7 +61,6 @@ public abstract class Jet {
 	}
 	
 	public void fly() {
-
 		System.out.println(getModel() + " has a speed of " + speed + " MPH (MACH  " + df.format(getSpeedInMach()) + "), with a range of " + rangeFormat.format(range) + " miles, "
 				+ "so it can fly " + df.format(range / speed) + " hours before it runs out of fuel. It sells for a cool $" + priceFormat.format(price));
 	}
@@ -70,6 +69,4 @@ public abstract class Jet {
 	public String toString() {
 		return "Type of jet: " + getClass().getSimpleName() + ", Model: " +  model + ", Speed: " + speed + " MPH, Range: " + rangeFormat.format(range) + " miles, Price: $" + priceFormat.format(price);
 	}
-	
-
 }

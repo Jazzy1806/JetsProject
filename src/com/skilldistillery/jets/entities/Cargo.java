@@ -10,5 +10,4 @@ public class Cargo extends Jet implements CargoCarrier {
 	public void loadCargo() {
 		System.out.println(getModel() + " is getting loaded up now...");
 	}
-	
 }

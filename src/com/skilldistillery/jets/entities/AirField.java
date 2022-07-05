@@ -18,20 +18,6 @@ public class AirField {
 			while ((line = bufIn.readLine()) != null) {
 				readJets = line.split(",");
 				addJet(readJets[0], readJets[1], Double.parseDouble(readJets[2]), Integer.parseInt(readJets[3]), Long.parseLong(readJets[4]));
-//				if (readJets[0].toLowerCase().equals("cargo")) {
-//					jets.add(new Cargo(readJets[1], Double.parseDouble(readJets[2]), Integer.parseInt(readJets[3]), Long.parseLong(readJets[4])));
-//				}
-//				else if (readJets[0].toLowerCase().equals("fighter")) {
-//					jets.add(new Fighter(readJets[1], Double.parseDouble(readJets[2]), Integer.parseInt(readJets[3]), Long.parseLong(readJets[4])));
-//				}
-//				else if (readJets[0].toLowerCase().equals("passenger")) {
-//					jets.add(new Passenger(readJets[1], Double.parseDouble(readJets[2]), Integer.parseInt(readJets[3]), Long.parseLong(readJets[4])));
-//				}
-//				else if (readJets[0].toLowerCase().equals("drone")) {
-//					jets.add(new Drone(readJets[1], Double.parseDouble(readJets[2]), Integer.parseInt(readJets[3]), Long.parseLong(readJets[4])));
-//				}
-// Add Else Statement to catch if no/wrong category?
-
 			}
 		} catch (IOException e) {
 			System.err.println(e);

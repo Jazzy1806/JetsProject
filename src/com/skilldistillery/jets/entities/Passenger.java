@@ -10,6 +10,4 @@ public class Passenger extends Jet implements Transport{
 	public void paxLoad() {
 		System.out.println(getModel() + " is now boarding passengers.");
 	}
-	
-
 }
