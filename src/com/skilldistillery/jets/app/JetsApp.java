@@ -30,24 +30,25 @@ public class JetsApp {
 		while(keepGoing) {
 			System.out.println("\n1. List all jets at the airfield: type \"list\"" +
 							 "\n2. Fly all of the jets at the airfield: type \"fly\"" +
-							 "\n3. View the fastest jet: type \"fastest\"" +
-							 "\n4. View the jet with the longest range: type \"range\"" +
-							 "\n5. Load all cargo jets: type \"cargo\"" +
-							 "\n6. Load all passenger jets: type \"passenger\"" +
-							 "\n7. Start a dogfight: type \"fight\"" +
-							 "\n8. Have all combat jets drop their bombs: type \"bombs\"" +
-							 "\n9. Have drones start a video feed : type \"video\"" +
-							 "\n10. Have drones scan for thermal signatures : type \"thermal\"" +
-							 "\n11. Add a jet to the airfield : type \"add\"" +
-							 "\n12. Remove a jet from the airfield inventory : type \"remove\"" +
-							 "\n13. Quit the program: type \"quit\"");
+							 "\n3. Select a jet to fly: type \"solo\"" +
+							 "\n4. View the fastest jet: type \"fastest\"" +
+							 "\n5. View the jet with the longest range: type \"range\"" +
+							 "\n6. Load all cargo jets: type \"cargo\"" +
+							 "\n7. Load all passenger jets: type \"passenger\"" +
+							 "\n8. Start a dogfight: type \"fight\"" +
+							 "\n9. Have all combat jets drop their bombs: type \"bombs\"" +
+							 "\n10. Have drones start a video feed : type \"video\"" +
+							 "\n11. Have drones scan for thermal signatures : type \"thermal\"" +
+							 "\n12. Add a jet to the airfield : type \"add\"" +
+							 "\n13. Remove a jet from the airfield inventory : type \"remove\"" +
+							 "\n14. Quit the program: type \"quit\"");
 			String selection = (scan.nextLine()).toLowerCase();
 			while (true) {
-				if (!selection.equals("list") && !selection.equals("fly") &&
+				if (!selection.equals("list") && !selection.equals("fly") && !selection.equals("solo") &&
 					!selection.equals("fastest") && !selection.equals("range") &&
 					!selection.equals("cargo") && !selection.equals("passenger") &&
 					!selection.equals("fight") && !selection.equals("bombs") &&
-					!selection.equals("video") && !selection.equals("thermal") &&
+					!selection.equals("video") && !selection.equals("thermal") && 
 					!selection.equals("add") && !selection.equals("remove") && !selection.equals("quit")) {
 						System.out.println("Hmm... that's not an option. What would you like to do? ");
 						selection = (scan.nextLine()).toLowerCase();
@@ -57,6 +58,7 @@ public class JetsApp {
 			switch (selection) {
 				case "list": listAllJets(); break;
 				case "fly": flyAllJets(); break;
+				case "solo": flyJet(); break;
 				case "fastest": fastestJet(); break;
 				case "range": longestRange(); break;
 				case "cargo": loadCargo(); break;
@@ -86,6 +88,19 @@ public class JetsApp {
 				jet.fly();
 			}
 		}
+	}
+	
+	public void flyJet() {
+		int counter = 1;
+		System.out.println("Which jet would you like to fly? ");
+		for (Jet jet : airfield.getJets()) {
+			if (jet != null) {
+				System.out.println(counter + ". " + jet);
+				counter++;
+			}
+		}
+		int choice = scan.nextInt();
+		airfield.getJets().get(choice - 1).fly();
 	}
 	
 	public void fastestJet() {
